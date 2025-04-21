@@ -9,19 +9,37 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    contractorform.cpp \
+    contractorlistview.cpp \
+    contractorrepository.cpp \
     databasemanager.cpp \
+    idatasource.cpp \
+    invoiceform.cpp \
+    invoicerepository.cpp \
     main.cpp \
     mainwindow.cpp \
     settingsmanager.cpp \
-    settingsview.cpp
+    settingsview.cpp \
+    sqlitedatasource.cpp
 
 HEADERS += \
+    contractorform.h \
+    contractorlistview.h \
+    contractorrepository.h \
     databasemanager.h \
+    icontratorrepository.h \
+    idatasource.h \
+    invoiceform.h \
+    invoicerepository.h \
     mainwindow.h \
     settingsmanager.h \
-    settingsview.h
+    settingsview.h \
+    sqlitedatasource.h
 
 FORMS += \
+    contractorform.ui \
+    contractorlistview.ui \
+    invoiceform.ui \
     mainwindow.ui \
     settingsview.ui
 

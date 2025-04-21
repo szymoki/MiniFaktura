@@ -16,32 +16,6 @@ SettingsManager::~SettingsManager()
     // bo DatabaseManager sam zamknie połączenie w swoim destruktorze
 }
 
-// Tworzy tabelę 'settings' z kluczem primary key
-bool SettingsManager::createSettingsTable()
-{
-    // Pobieramy uchwyt do bazy z Singletona DatabaseManager
-    auto db = DatabaseManager::getInstance().getDatabase();
-    if (!db.isOpen()) {
-        qWarning() << "Baza nie jest otwarta. Nie można utworzyć tabeli 'settings'.";
-        return false;
-    }
-
-    QSqlQuery query(db);
-    const QString sql = R"(
-        CREATE TABLE IF NOT EXISTS settings (
-            key TEXT PRIMARY KEY,
-            value TEXT
-        )
-    )";
-
-    if (!query.exec(sql)) {
-        qWarning() << "Błąd tworzenia tabeli 'settings':" << query.lastError().text();
-        return false;
-    }
-
-    qDebug() << "Tabela 'settings' została utworzona (lub już istniała).";
-    return true;
-}
 
 // Zapisuje lub nadpisuje wartość dla danego klucza (INSERT OR REPLACE)
 bool SettingsManager::setValue(const QString &key, const QString &value)

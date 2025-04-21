@@ -10,9 +10,6 @@ public:
     SettingsManager();
     ~SettingsManager();
 
-    // Tworzy tabelę 'settings' (klucz-wartość) - jeśli jej nie ma
-    bool createSettingsTable();
-
     // Ustawia/aktualizuje wartość dla danego klucza
     bool setValue(const QString &key, const QString &value);
 

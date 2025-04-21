@@ -56,13 +56,11 @@ void DatabaseManager::closeDB()
 
 bool DatabaseManager::createSettingsTable()
 {
-    // Upewnij się, że baza jest otwarta
     if (!m_database.isOpen()) {
         qWarning() << "Baza danych nie jest otwarta. Nie można utworzyć tabeli 'settings'.";
         return false;
     }
 
-    // Tworzymy (jeśli nie istnieje) tabelę: settings(key TEXT PRIMARY KEY, value TEXT)
     QSqlQuery query(m_database);
     QString createTableSQL = R"(
         CREATE TABLE IF NOT EXISTS settings (
@@ -78,6 +76,84 @@ bool DatabaseManager::createSettingsTable()
 
     qDebug() << "Tabela 'settings' została utworzona (lub już istniała).";
     return true;
+}
+bool DatabaseManager::createInvoiceTable()
+{
+    QSqlQuery query(m_database);
+    QString createTableSQL = R"(
+        CREATE TABLE IF NOT EXISTS invoice (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            contractor_id INTEGER NOT NULL,
+            create_date TEXT NOT NULL,
+            invoice_number TEXT NOT NULL,
+            total_amount REAL NOT NULL,
+            amount REAL NOT NULL,
+            FOREIGN KEY(contractor_id) REFERENCES contractor(id)
+        );
+    )";
+
+    if (!query.exec(createTableSQL)) {
+        qWarning() << "Błąd tworzenia tabeli 'invoice':" << query.lastError().text();
+        return false;
+    }
+
+    qDebug() << "Tabela 'invoice' została utworzona (lub już istniała).";
+    return true;
+}
+bool DatabaseManager::createInvoiceItemTable()
+{
+    QSqlQuery query(m_database);
+    QString createTableSQL = R"(
+        CREATE TABLE IF NOT EXISTS invoice_item (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            invoice_id INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            vat_rate REAL NOT NULL,
+            qty INTEGER NOT NULL,
+            price REAL NOT NULL,
+            FOREIGN KEY(invoice_id) REFERENCES invoice(id)
+        );
+    )";
+
+    if (!query.exec(createTableSQL)) {
+        qWarning() << "Błąd tworzenia tabeli 'invoice':" << query.lastError().text();
+        return false;
+    }
+
+    qDebug() << "Tabela 'invoice' została utworzona (lub już istniała).";
+    return true;
+}
+bool DatabaseManager::createContractorTable()
+{
+
+    QSqlQuery query(m_database);
+    QString createTableSQL = R"(
+        CREATE TABLE IF NOT EXISTS contractor (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            address TEXT,
+            email TEXT,
+            nip TEXT
+        );
+    )";
+
+    if (!query.exec(createTableSQL)) {
+        qWarning() << "Błąd tworzenia tabeli 'contractor':" << query.lastError().text();
+        return false;
+    }
+    qDebug() << "Tabela 'contractor' została utworzona (lub już istniała).";
+    return true;
+}
+void DatabaseManager::migrate()
+{
+    if (!m_database.isOpen()) {
+        qWarning() << "Baza danych nie jest otwarta. Nie można utworzyć tabeli 'invoice'.";
+        return;
+    }
+    createSettingsTable();
+    createInvoiceItemTable();
+    createInvoiceTable();
+    createContractorTable();
 }
 QSqlDatabase DatabaseManager::getDatabase() const
 {

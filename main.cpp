@@ -5,12 +5,13 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include "settingsmanager.h"
+#include "sqlitedatasource.h"
+#include "contractorrepository.h"
+#include "invoicerepository.h"
+
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.setWindowTitle("MiniFaktura  - Szymon Haczyk");
-    w.show();
+
     auto &dbManager = DatabaseManager::getInstance();
 
        // 1. Otwieramy bazę danych "mydatabase.db"
@@ -18,13 +19,14 @@ int main(int argc, char *argv[])
            qWarning() << "Nie udało się otworzyć bazy danych!";
            return -1;
        }
+       dbManager.migrate();
+       SQLiteDataSource *data = new SQLiteDataSource(&dbManager);
+       ContractorRepository *contractorRepo = new ContractorRepository(data);
+       InvoiceRepository *invoiceRepo = new InvoiceRepository(data);
 
-       // 2. Tworzymy obiekt SettingsManager (zwykła klasa, nie singleton)
-         SettingsManager settings;
-
-         // 3. Tworzymy tabelę 'settings' (jeśli jeszcze nie istnieje)
-         settings.createSettingsTable();
-
+       QApplication a(argc, argv);
+       MainWindow w(contractorRepo,invoiceRepo);
+       w.setWindowTitle("MiniFaktura  - Szymon Haczyk");
+       w.show();
     return a.exec();
-
 }

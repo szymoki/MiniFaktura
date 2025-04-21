@@ -16,10 +16,9 @@ public:
 
     // Zamyka połączenie z bazą danych
     void closeDB();
-
+    void migrate();
     // Zwraca obiekt QSqlDatabase (możemy go użyć np. w QSqlQuery)
     QSqlDatabase getDatabase() const;
-    bool createSettingsTable();
 
 private:
     // Prywatny konstruktor i destruktor — klasa jest Singletonem
@@ -33,6 +32,11 @@ private:
     // Obiekt QSqlDatabase, który reprezentuje połączenie z bazą
     QSqlDatabase m_database;
     QString m_connectionName;
+    bool createSettingsTable();
+    bool createInvoiceTable();
+    bool createInvoiceItemTable();
+    bool createContractorTable();
+
 };
 
 #endif // DATABASEMANAGER_H
