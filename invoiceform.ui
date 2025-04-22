@@ -169,6 +169,9 @@
    </property>
   </widget>
   <widget class="QTableView" name="tableItems">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -176,6 +179,9 @@
      <width>521</width>
      <height>131</height>
     </rect>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">

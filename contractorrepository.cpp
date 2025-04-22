@@ -14,3 +14,6 @@ Contractor ContractorRepository::getById(int id) {
 void ContractorRepository::save(const Contractor& contractor) {
     dataSource->saveContractor(contractor);
 }
+void ContractorRepository::deleteById(int id) {
+    return dataSource->deleteContractorById(id);
+}

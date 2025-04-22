@@ -266,3 +266,60 @@ void SQLiteDataSource::saveContractor(const Contractor& contractor) {
         qWarning() << "Błąd podczas zapisywania kontrahenta:";
     }
 }
+
+void  SQLiteDataSource::deleteInvoiceById(int id) {
+    QSqlDatabase db = databaseManager->getDatabase();
+    QSqlQuery query(db);
+
+    // Usuń pozycje powiązane z fakturą
+    query.prepare("DELETE FROM invoice_item WHERE invoice_id = :id");
+    query.bindValue(":id", id);
+    if (!query.exec()) {
+        qDebug() << "Błąd podczas usuwania pozycji faktury";
+    }
+
+    // Usuń fakturę
+    query.prepare("DELETE FROM invoice WHERE id = :id");
+    query.bindValue(":id", id);
+    if (!query.exec()) {
+        qDebug() << "Błąd podczas usuwania faktury";
+    }
+}
+
+void SQLiteDataSource::deleteContractorById(int id) {
+    QSqlDatabase db = databaseManager->getDatabase();
+    QSqlQuery query(db);
+
+    query.prepare("DELETE FROM contractor WHERE id = :id");
+    query.bindValue(":id", id);
+    if (!query.exec()) {
+        qDebug() << "Błąd podczas usuwania kontrahenta";
+    }
+}
+std::string SQLiteDataSource::getNextInvoiceNumber() {
+    QSqlDatabase db = databaseManager->getDatabase();
+
+    if (!db.isOpen()) {
+        qWarning() << "Database is not open!";
+        return "1"; // Domyślny numer faktury, jeśli baza danych nie jest dostępna
+    }
+
+    QSqlQuery query(db);
+    if (!query.exec("SELECT MAX(CAST(invoice_number AS INTEGER)) FROM invoice")) {
+        qWarning() << "Query execution failed";
+        return "1"; // Domyślny numer faktury w przypadku błędu zapytania
+    }
+
+    if (query.next()) {
+        QVariant maxValue = query.value(0);
+        if (maxValue.isNull()) {
+            return "1"; // Brak istniejących faktur
+        } else {
+            int nextNumber = maxValue.toInt() + 1;
+            return QString::number(nextNumber).toStdString();
+        }
+    }
+
+    return "1"; // Domyślny numer faktury w przypadku nieoczekiwanego zachowania
+}
+
