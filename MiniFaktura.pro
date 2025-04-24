@@ -29,7 +29,6 @@ HEADERS += \
     contractorlistview.h \
     contractorrepository.h \
     databasemanager.h \
-    icontractorrepository.h \
     idatasource.h \
     invoiceform.h \
     invoicerepository.h \
