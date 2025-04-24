@@ -3,12 +3,21 @@
 #include <QMessageBox>
 #include "idatasource.h"
 #include "contractorrepository.h"
-ContractorForm::ContractorForm(ContractorRepository* contractorRepo, QWidget *parent) :
+ContractorForm::ContractorForm(ContractorRepository* contractorRepo,int id, QWidget *parent) :
     QDialog(parent),
+    editId(id),
     ui(new Ui::ContractorForm),
     contractorRepository(contractorRepo)
 {
     ui->setupUi(this);
+    setWindowTitle("Dodaj kontrahenta");
+    if(editId){
+        Contractor contractor = contractorRepository->getById(editId);
+        ui->nameInput->setText(QString::fromStdString(contractor.name));
+        ui->addressInput->setText(QString::fromStdString(contractor.address));
+        ui->emailInput->setText(QString::fromStdString(contractor.email));
+        ui->nipInput->setText(QString::fromStdString(contractor.nip));
+    }
 }
 
 ContractorForm::~ContractorForm()
@@ -29,7 +38,11 @@ void ContractorForm::on_buttonBox_accepted()
        }
 
        Contractor contractor;
+
        contractor.id = 0; // Nowy kontrahent
+       if(editId){
+           contractor.id = editId;
+       }
        contractor.name = name.toStdString();
        contractor.address = address.toStdString();
        contractor.email = email.toStdString();

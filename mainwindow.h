@@ -78,7 +78,11 @@ private:
      * @param invoiceId The ID of the invoice to print
      */
     void printInvoice(int invoiceId);
-    
+    /**
+     * @brief Send the invoice with the specified ID
+     * @param invoiceId The ID of the invoice to send
+     */
+    void emailInvoice(int invoiceId);
     /**
      * @brief Delete the invoice with the specified ID
      * @param invoiceId The ID of the invoice to delete

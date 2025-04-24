@@ -46,6 +46,8 @@ QString InvoiceToPdfGenerator::generateInvoiceHtml(const Invoice& invoice, const
     htmlTemplate.replace("{{createDate}}", QString::fromStdString(invoice.createDate));
     htmlTemplate.replace("{{contractorName}}", QString::fromStdString(contractor.name));
     htmlTemplate.replace("{{contractorAddress}}", QString::fromStdString(contractor.address));
+    htmlTemplate.replace("{{contractorNip}}", QString::fromStdString(contractor.nip));
+    htmlTemplate.replace("{{maturityDate}}", QString::fromStdString(invoice.maturityDate));
 
     htmlTemplate.replace("{{items}}", itemsHtml);
     htmlTemplate.replace("{{amount}}", QString::number(invoice.amount, 'f', 2));

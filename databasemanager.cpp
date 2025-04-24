@@ -85,6 +85,7 @@ bool DatabaseManager::createInvoiceTable()
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             contractor_id INTEGER NOT NULL,
             create_date TEXT NOT NULL,
+            maturity_date TEXT NOT NULL,
             invoice_number TEXT NOT NULL,
             total_amount REAL NOT NULL,
             amount REAL NOT NULL,

@@ -14,10 +14,11 @@
 <body>
     <h1>Faktura {{invoiceNumber}}</h1>
 
-    <p><strong>Sprzedawca:</strong> <Br>{{companyName}}<br>{{companyAddress}}</p>
-    <p class="right"><strong>Kontrahent:</strong> <Br>{{contractorName}}<br>{{contractorAddress}}</p>
+    <p><strong>Sprzedawca:</strong> <Br>{{companyName}}<br>{{companyAddress}} <br> NIP: {{nip}}</p>
+    <p class="right"><strong>Kontrahent:</strong> <Br>{{contractorName}}<br>{{contractorAddress}}<br> NIP: {{contractorNip}}</p>
 
     <p><strong>Data wystawienia:</strong> {{createDate}}</p>
+    <p><strong>Termin płatności:</strong> {{maturityDate}}</p>
 
     <p> <strong>Pozycje</strong></p>
     <table>

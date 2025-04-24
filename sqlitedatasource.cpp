@@ -27,6 +27,7 @@ std::vector<Invoice> SQLiteDataSource::getAllInvoices() {
         inv.id = query.value("id").toInt();
         inv.contractorId = query.value("contractor_id").toInt();
         inv.createDate = query.value("create_date").toString().toStdString();
+        inv.maturityDate = query.value("maturity_date").toString().toStdString();
         inv.invoiceNumber = query.value("invoice_number").toString().toStdString();
         inv.totalAmount = query.value("total_amount").toDouble();
         inv.amount = query.value("amount").toDouble();
@@ -73,22 +74,21 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
 
     QSqlQuery query(db);
 
-    db.transaction();  // Rozpoczynamy transakcję
+    db.transaction();
 
     int invoiceId = invoice.id;
 
     if (invoice.id == 0) {
-        // NOWA faktura
         query.prepare(R"(
-            INSERT INTO invoice (contractor_id, create_date, invoice_number, total_amount, amount)
-            VALUES (:contractor_id, :create_date, :invoice_number, :total_amount, :amount)
+            INSERT INTO invoice (contractor_id, create_date, invoice_number, total_amount, amount, maturity_date)
+            VALUES (:contractor_id, :create_date, :invoice_number, :total_amount, :amount, :maturity_date)
         )");
         query.bindValue(":contractor_id", invoice.contractorId);
         query.bindValue(":create_date", QString::fromStdString(invoice.createDate));
         query.bindValue(":invoice_number", QString::fromStdString(invoice.invoiceNumber));
         query.bindValue(":total_amount", invoice.totalAmount);
         query.bindValue(":amount", invoice.amount);
-
+        query.bindValue(":maturity_date", QString::fromStdString(invoice.maturityDate));
         if (!query.exec()) {
             qWarning() << "Failed to insert invoice";
             db.rollback();
@@ -97,10 +97,9 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
 
         invoiceId = query.lastInsertId().toInt();
     } else {
-        // AKTUALIZACJA (prosta wersja – bez aktualizacji pozycji)
         query.prepare(R"(
             UPDATE invoice SET contractor_id = :contractor_id, create_date = :create_date,
-            invoice_number = :invoice_number, total_amount = :total_amount, amount = :amount
+            invoice_number = :invoice_number, total_amount = :total_amount, amount = :amount, maturity_date = :maturity_date
             WHERE id = :id
         )");
         query.bindValue(":id", invoice.id);
@@ -109,6 +108,7 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
         query.bindValue(":invoice_number", QString::fromStdString(invoice.invoiceNumber));
         query.bindValue(":total_amount", invoice.totalAmount);
         query.bindValue(":amount", invoice.amount);
+        query.bindValue(":maturity_date", QString::fromStdString(invoice.maturityDate));
 
         if (!query.exec()) {
             qWarning() << "Failed to update invoice:";
@@ -116,7 +116,6 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
             return;
         }
 
-        // Usuwamy stare pozycje (można później ulepszyć)
         QSqlQuery delQuery(db);
         delQuery.prepare("DELETE FROM invoice_item WHERE invoice_id = :invoice_id");
         delQuery.bindValue(":invoice_id", invoice.id);
@@ -127,7 +126,6 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
         }
     }
 
-    // Wstawiamy pozycje
     for (const auto& item : invoice.items) {
         QSqlQuery itemQuery(db);
         itemQuery.prepare(R"(
@@ -147,7 +145,7 @@ void SQLiteDataSource::saveInvoice(const Invoice& invoice) {
         }
     }
 
-    db.commit();  // Zatwierdzamy wszystko
+    db.commit();
 }
 
 Invoice SQLiteDataSource::getInvoiceById(int id) {
@@ -180,7 +178,6 @@ Invoice SQLiteDataSource::getInvoiceById(int id) {
         invoice.totalAmount = query.value("total_amount").toDouble();
         invoice.amount = query.value("amount").toDouble();
 
-        // Pobieramy pozycje
         invoice.items = getInvoiceItems(invoice.id);
     } else {
         qWarning() << "Invoice not found with ID:" << id;
@@ -242,13 +239,11 @@ void SQLiteDataSource::saveContractor(const Contractor& contractor) {
     QSqlQuery query(db);
 
     if (contractor.id == 0) {
-        // Wstawianie nowego kontrahenta
         query.prepare(R"(
             INSERT INTO contractor (name, address, email, nip)
             VALUES (:name, :address, :email, :nip)
         )");
     } else {
-        // Aktualizacja istniejącego kontrahenta
         query.prepare(R"(
             UPDATE contractor
             SET name = :name, address = :address, email = :email, nip = :nip
@@ -271,14 +266,12 @@ void  SQLiteDataSource::deleteInvoiceById(int id) {
     QSqlDatabase db = databaseManager->getDatabase();
     QSqlQuery query(db);
 
-    // Usuń pozycje powiązane z fakturą
     query.prepare("DELETE FROM invoice_item WHERE invoice_id = :id");
     query.bindValue(":id", id);
     if (!query.exec()) {
         qDebug() << "Błąd podczas usuwania pozycji faktury";
     }
 
-    // Usuń fakturę
     query.prepare("DELETE FROM invoice WHERE id = :id");
     query.bindValue(":id", id);
     if (!query.exec()) {

@@ -1,0 +1,277 @@
+\hypertarget{classSQLiteDataSource}{}\doxysection{SQLite\+Data\+Source Class Reference}
+\label{classSQLiteDataSource}\index{SQLiteDataSource@{SQLiteDataSource}}
+
+
+Class representing a SQLite data source for handling invoices, items, and contractors.  
+
+
+
+
+{\ttfamily \#include $<$sqlitedatasource.\+h$>$}
+
+
+
+Inheritance diagram for SQLite\+Data\+Source\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classSQLiteDataSource__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for SQLite\+Data\+Source\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classSQLiteDataSource__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSQLiteDataSource_a2008e0e997bd9fb5f169b0c6d68a86f5}{SQLite\+Data\+Source}} (\mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} $\ast$database\+Manager)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classSQLiteDataSource}{SQLite\+Data\+Source}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structInvoice}{Invoice}} $>$ \mbox{\hyperlink{classSQLiteDataSource_ac4cfd9f27dadbbe40ea4b4a9bfb610b7}{get\+All\+Invoices}} () override
+\begin{DoxyCompactList}\small\item\em Get all invoices. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structInvoiceItem}{Invoice\+Item}} $>$ \mbox{\hyperlink{classSQLiteDataSource_ac44da1d32bb25d58b497c120e0b80506}{get\+Invoice\+Items}} (int invoice\+Id) override
+\begin{DoxyCompactList}\small\item\em Get all items of a specific invoice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structInvoice}{Invoice}} \mbox{\hyperlink{classSQLiteDataSource_a84daa2662c443e969e0839c33ff99436}{get\+Invoice\+By\+Id}} (int id) override
+\begin{DoxyCompactList}\small\item\em Get an invoice by ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSQLiteDataSource_ab2d389bb3fb0192d0970063484839792}{save\+Invoice}} (const \mbox{\hyperlink{structInvoice}{Invoice}} \&invoice) override
+\begin{DoxyCompactList}\small\item\em Save an invoice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSQLiteDataSource_aa110184cad9d6dd41d6af964d14fef6c}{delete\+Invoice\+By\+Id}} (int id) override
+\begin{DoxyCompactList}\small\item\em Delete an invoice by ID. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structContractor}{Contractor}} $>$ \mbox{\hyperlink{classSQLiteDataSource_a24655eedd7d88acd0a48540f362a33a9}{get\+All\+Contractors}} () override
+\begin{DoxyCompactList}\small\item\em Get all contractors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structContractor}{Contractor}} \mbox{\hyperlink{classSQLiteDataSource_a12fcd697ebce411b6fca976abc29d71d}{get\+Contractor\+By\+Id}} (int id) override
+\begin{DoxyCompactList}\small\item\em Get a contractor by ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSQLiteDataSource_aaeafcbee90f1fff183f18662ffc36156}{save\+Contractor}} (const \mbox{\hyperlink{structContractor}{Contractor}} \&contractor) override
+\begin{DoxyCompactList}\small\item\em Save a contractor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSQLiteDataSource_a41f69f793b66463f0177a5cd5e1adbbc}{delete\+Contractor\+By\+Id}} (int id) override
+\begin{DoxyCompactList}\small\item\em Delete a contractor by ID. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classSQLiteDataSource_ac138607510e5c7b89fb57835d88e44c4}{get\+Next\+Invoice\+Number}} () override
+\begin{DoxyCompactList}\small\item\em Get next invoice number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a SQLite data source for handling invoices, items, and contractors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSQLiteDataSource_a2008e0e997bd9fb5f169b0c6d68a86f5}\label{classSQLiteDataSource_a2008e0e997bd9fb5f169b0c6d68a86f5}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!SQLiteDataSource@{SQLiteDataSource}}
+\index{SQLiteDataSource@{SQLiteDataSource}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{SQLiteDataSource()}{SQLiteDataSource()}}
+{\footnotesize\ttfamily SQLite\+Data\+Source\+::\+SQLite\+Data\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} $\ast$}]{database\+Manager }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classSQLiteDataSource}{SQLite\+Data\+Source}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em database\+Manager} & A pointer to the \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSQLiteDataSource_a41f69f793b66463f0177a5cd5e1adbbc}\label{classSQLiteDataSource_a41f69f793b66463f0177a5cd5e1adbbc}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!deleteContractorById@{deleteContractorById}}
+\index{deleteContractorById@{deleteContractorById}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{deleteContractorById()}{deleteContractorById()}}
+{\footnotesize\ttfamily void SQLite\+Data\+Source\+::delete\+Contractor\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Delete a contractor by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the contractor to delete \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a5cca3fc968b2e615bce4640756edd3a1}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_aa110184cad9d6dd41d6af964d14fef6c}\label{classSQLiteDataSource_aa110184cad9d6dd41d6af964d14fef6c}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!deleteInvoiceById@{deleteInvoiceById}}
+\index{deleteInvoiceById@{deleteInvoiceById}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{deleteInvoiceById()}{deleteInvoiceById()}}
+{\footnotesize\ttfamily void SQLite\+Data\+Source\+::delete\+Invoice\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Delete an invoice by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the invoice to delete \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a34ff659cf3c1ddbfd41b497f2d2e39c0}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_a24655eedd7d88acd0a48540f362a33a9}\label{classSQLiteDataSource_a24655eedd7d88acd0a48540f362a33a9}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getAllContractors@{getAllContractors}}
+\index{getAllContractors@{getAllContractors}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getAllContractors()}{getAllContractors()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structContractor}{Contractor}} $>$ SQLite\+Data\+Source\+::get\+All\+Contractors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all contractors. 
+
+\begin{DoxyReturn}{Returns}
+A vector of all contractors 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a605d55bf9319adf2d19a8ad5bfe2576e}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_ac4cfd9f27dadbbe40ea4b4a9bfb610b7}\label{classSQLiteDataSource_ac4cfd9f27dadbbe40ea4b4a9bfb610b7}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getAllInvoices@{getAllInvoices}}
+\index{getAllInvoices@{getAllInvoices}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getAllInvoices()}{getAllInvoices()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structInvoice}{Invoice}} $>$ SQLite\+Data\+Source\+::get\+All\+Invoices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all invoices. 
+
+\begin{DoxyReturn}{Returns}
+A vector of all invoices 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a4f3cb489d77a3facd25bdc8a38d67eb3}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_a12fcd697ebce411b6fca976abc29d71d}\label{classSQLiteDataSource_a12fcd697ebce411b6fca976abc29d71d}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getContractorById@{getContractorById}}
+\index{getContractorById@{getContractorById}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getContractorById()}{getContractorById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structContractor}{Contractor}} SQLite\+Data\+Source\+::get\+Contractor\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a contractor by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the contractor to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contractor with the specified ID 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a78f40efcbadb10cadffb311cc7f31fdd}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_a84daa2662c443e969e0839c33ff99436}\label{classSQLiteDataSource_a84daa2662c443e969e0839c33ff99436}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getInvoiceById@{getInvoiceById}}
+\index{getInvoiceById@{getInvoiceById}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getInvoiceById()}{getInvoiceById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInvoice}{Invoice}} SQLite\+Data\+Source\+::get\+Invoice\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get an invoice by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the invoice to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The invoice with the specified ID 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a0e9fe36dfd262a13bdf07513765a39e7}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_ac44da1d32bb25d58b497c120e0b80506}\label{classSQLiteDataSource_ac44da1d32bb25d58b497c120e0b80506}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getInvoiceItems@{getInvoiceItems}}
+\index{getInvoiceItems@{getInvoiceItems}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getInvoiceItems()}{getInvoiceItems()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structInvoiceItem}{Invoice\+Item}} $>$ SQLite\+Data\+Source\+::get\+Invoice\+Items (\begin{DoxyParamCaption}\item[{int}]{invoice\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all items of a specific invoice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invoice\+Id} & The ID of the invoice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of items belonging to the specified invoice 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a0ea05882b3d747d52daff25d51a92873}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_ac138607510e5c7b89fb57835d88e44c4}\label{classSQLiteDataSource_ac138607510e5c7b89fb57835d88e44c4}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!getNextInvoiceNumber@{getNextInvoiceNumber}}
+\index{getNextInvoiceNumber@{getNextInvoiceNumber}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{getNextInvoiceNumber()}{getNextInvoiceNumber()}}
+{\footnotesize\ttfamily std\+::string SQLite\+Data\+Source\+::get\+Next\+Invoice\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get next invoice number. 
+
+\begin{DoxyReturn}{Returns}
+Next invoice number 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIDataSource_ad68a1d2d5c87d4ca9a053a7e659d0df1}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_aaeafcbee90f1fff183f18662ffc36156}\label{classSQLiteDataSource_aaeafcbee90f1fff183f18662ffc36156}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!saveContractor@{saveContractor}}
+\index{saveContractor@{saveContractor}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{saveContractor()}{saveContractor()}}
+{\footnotesize\ttfamily void SQLite\+Data\+Source\+::save\+Contractor (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structContractor}{Contractor}} \&}]{contractor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save a contractor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contractor} & The contractor to save \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIDataSource_a4d7223b15eafa8eb78cfa0fbcb9b5319}{IData\+Source}}.
+
+\mbox{\Hypertarget{classSQLiteDataSource_ab2d389bb3fb0192d0970063484839792}\label{classSQLiteDataSource_ab2d389bb3fb0192d0970063484839792}} 
+\index{SQLiteDataSource@{SQLiteDataSource}!saveInvoice@{saveInvoice}}
+\index{saveInvoice@{saveInvoice}!SQLiteDataSource@{SQLiteDataSource}}
+\doxysubsubsection{\texorpdfstring{saveInvoice()}{saveInvoice()}}
+{\footnotesize\ttfamily void SQLite\+Data\+Source\+::save\+Invoice (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInvoice}{Invoice}} \&}]{invoice }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save an invoice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invoice} & The invoice to save \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIDataSource_af5665c2aebcb781f439d7cc45c004824}{IData\+Source}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sqlitedatasource.\+h\item 
+sqlitedatasource.\+cpp\end{DoxyCompactItemize}

@@ -12,6 +12,7 @@ ContractorListView::ContractorListView(ContractorRepository* contractorRepo, QWi
     , contractorRepository(contractorRepo)
 {
     ui->setupUi(this);
+    setWindowTitle("Lista kontrahentów");
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
     loadContractorsToTable();
     ui->tableView->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -27,7 +28,7 @@ ContractorListView::~ContractorListView()
 
 void ContractorListView::on_pushButton_clicked()
 {
-    ContractorForm dialog(contractorRepository,this); // parent = this
+    ContractorForm dialog(contractorRepository,0,this); // parent = this
     if (dialog.exec() == QDialog::Accepted) {
         loadContractorsToTable();
     }
@@ -44,12 +45,19 @@ void ContractorListView::onInvoiceTableContextMenu(const QPoint& pos) {
     int contractorId = ui->tableView->model()->data(idIndex).toInt();
 
     QMenu contextMenu(this);
+    QAction* editAction = contextMenu.addAction("Edytuj");
 
     QAction* deleteAction = contextMenu.addAction("Usuń");
 
     QAction* selectedAction = contextMenu.exec(ui->tableView->viewport()->mapToGlobal(pos));
     if (selectedAction == deleteAction) {
         deleteContractor(contractorId);
+    }
+    if (selectedAction == editAction) {
+        ContractorForm dialog(contractorRepository,contractorId,this); // parent = this
+        if (dialog.exec() == QDialog::Accepted) {
+            loadContractorsToTable();
+        }
     }
 }
 

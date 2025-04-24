@@ -1,0 +1,73 @@
+\hypertarget{classInvoiceToPdfGenerator}{}\doxysection{Invoice\+To\+Pdf\+Generator Class Reference}
+\label{classInvoiceToPdfGenerator}\index{InvoiceToPdfGenerator@{InvoiceToPdfGenerator}}
+
+
+Class for generating PDF invoices.  
+
+
+
+
+{\ttfamily \#include $<$invoicetopdfgenerator.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInvoiceToPdfGenerator_a0fdc8a616a4adc5031615a6c896aeb1e}\label{classInvoiceToPdfGenerator_a0fdc8a616a4adc5031615a6c896aeb1e}} 
+\mbox{\hyperlink{classInvoiceToPdfGenerator_a0fdc8a616a4adc5031615a6c896aeb1e}{Invoice\+To\+Pdf\+Generator}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classInvoiceToPdfGenerator}{Invoice\+To\+Pdf\+Generator}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInvoiceToPdfGenerator_a450746576ed174548a51268ca23efee7}{generate\+Invoice\+Pdf}} (const \mbox{\hyperlink{structInvoice}{Invoice}} \&invoice, const \mbox{\hyperlink{structContractor}{Contractor}} \&contractor, const QString \&output\+Path)
+\begin{DoxyCompactList}\small\item\em Generate PDF for the invoice. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInvoiceToPdfGenerator_a4f4335c804f94145d5eaa8a717d7dc66}{print\+Invoice\+Pdf}} (const \mbox{\hyperlink{structInvoice}{Invoice}} \&invoice, const \mbox{\hyperlink{structContractor}{Contractor}} \&contractor, const QString \&output\+Path, QWidget $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Print the PDF of the invoice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for generating PDF invoices. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInvoiceToPdfGenerator_a450746576ed174548a51268ca23efee7}\label{classInvoiceToPdfGenerator_a450746576ed174548a51268ca23efee7}} 
+\index{InvoiceToPdfGenerator@{InvoiceToPdfGenerator}!generateInvoicePdf@{generateInvoicePdf}}
+\index{generateInvoicePdf@{generateInvoicePdf}!InvoiceToPdfGenerator@{InvoiceToPdfGenerator}}
+\doxysubsubsection{\texorpdfstring{generateInvoicePdf()}{generateInvoicePdf()}}
+{\footnotesize\ttfamily void Invoice\+To\+Pdf\+Generator\+::generate\+Invoice\+Pdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInvoice}{Invoice}} \&}]{invoice,  }\item[{const \mbox{\hyperlink{structContractor}{Contractor}} \&}]{contractor,  }\item[{const QString \&}]{output\+Path }\end{DoxyParamCaption})}
+
+
+
+Generate PDF for the invoice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invoice} & The invoice data \\
+\hline
+{\em contractor\+Name} & The name of the contractor \\
+\hline
+{\em output\+Path} & The path where the PDF will be saved \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInvoiceToPdfGenerator_a4f4335c804f94145d5eaa8a717d7dc66}\label{classInvoiceToPdfGenerator_a4f4335c804f94145d5eaa8a717d7dc66}} 
+\index{InvoiceToPdfGenerator@{InvoiceToPdfGenerator}!printInvoicePdf@{printInvoicePdf}}
+\index{printInvoicePdf@{printInvoicePdf}!InvoiceToPdfGenerator@{InvoiceToPdfGenerator}}
+\doxysubsubsection{\texorpdfstring{printInvoicePdf()}{printInvoicePdf()}}
+{\footnotesize\ttfamily void Invoice\+To\+Pdf\+Generator\+::print\+Invoice\+Pdf (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInvoice}{Invoice}} \&}]{invoice,  }\item[{const \mbox{\hyperlink{structContractor}{Contractor}} \&}]{contractor,  }\item[{const QString \&}]{output\+Path,  }\item[{QWidget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Print the PDF of the invoice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invoice} & The invoice data \\
+\hline
+{\em contractor\+Name} & The name of the contractor \\
+\hline
+{\em output\+Path} & The path where the PDF will be saved \\
+\hline
+{\em parent} & The parent widget \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{invoicetopdfgenerator_8h}{invoicetopdfgenerator.\+h}}\item 
+invoicetopdfgenerator.\+cpp\end{DoxyCompactItemize}

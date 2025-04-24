@@ -1,20 +1,18 @@
 #include "emailsender.h"
-#include "SmtpClient-for-Qt/src/SmtpMime"
 #include <QFile>
 #include <QDebug>
-
+#include "smtpclient/src/SmtpMime"
 EmailSender::EmailSender(const QString& smtpHost, int smtpPort,
-                         const QString& username, const QString& password,
+                         const QString& username, const QString& password,const QString& email,const QString& name,
                          bool useSsl)
     : smtpHost(smtpHost), smtpPort(smtpPort),
-      username(username), password(password), useSsl(useSsl) {}
+      username(username), password(password), senderEmail(email),senderName(name),useSsl(useSsl) {}
 
 bool EmailSender::sendInvoiceEmail(const Contractor& contractor, const Invoice& invoice, const QString& pdfPath) {
     // Tworzenie wiadomości e-mail
     MimeMessage message;
-        EmailAddress sender(SENDER_EMAIL, SENDER_NAME);
-    message.setSender( EmailAddress(username, "Twoja Firma"));
-    message.addRecipient(new EmailAddress(QString::fromStdString(contractor.email), QString::fromStdString(contractor.name)));
+    message.setSender( EmailAddress(senderEmail, senderName));
+    message.addRecipient(EmailAddress(QString::fromStdString(contractor.email), QString::fromStdString(contractor.name)));
     message.setSubject("Faktura nr " + QString::fromStdString(invoice.invoiceNumber));
 
     // Treść wiadomości
@@ -30,11 +28,10 @@ bool EmailSender::sendInvoiceEmail(const Contractor& contractor, const Invoice& 
         delete pdfFile;
         return false;
     }
-//    MimeAttachment* attachment = new MimeAttachment(pdfFile);
-//    attachment->setContentType("application/pdf");
-//    attachment->setContentDisposition(MimePart::ContentDisposition::Attachment);
-//    attachment->setFileName("Faktura_" + QString::fromStdString(invoice.invoiceNumber) + ".pdf");
-//    message.addPart(attachment);
+    MimeAttachment* attachment = new MimeAttachment(pdfFile);
+    attachment->setContentType("application/pdf");
+
+    message.addPart(attachment);
 
     // Konfiguracja klienta SMTP
     SmtpClient smtp(smtpHost, smtpPort,

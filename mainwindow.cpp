@@ -5,6 +5,9 @@
 #include "contractorlistview.h"
 #include "ui_contractorlistview.h"
 #include "invoicetopdfgenerator.h"
+#include "settingsmanager.h"
+#include "emailsender.h"
+
 MainWindow::MainWindow(ContractorRepository* contractorRepo,InvoiceRepository* invoiceRepo,QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -113,7 +116,7 @@ void MainWindow::onInvoiceTableContextMenu(const QPoint& pos) {
     } else if (selectedAction == deleteAction) {
         deleteInvoice(invoiceId);
     }else if (selectedAction == emailAction) {
-       // deleteInvoice(invoiceId);
+        emailInvoice(invoiceId);
     }
 }
 
@@ -122,8 +125,32 @@ void MainWindow::printInvoice(int invoiceId) {
     Invoice invoice =invoiceRepository->getInvoiceById(invoiceId);
     Contractor contractor = contractorRepository->getById(invoice.contractorId);
     InvoiceToPdfGenerator *generator = new InvoiceToPdfGenerator();
-    generator->printInvoicePdf(invoice,contractor,"file.pdf",this);
+    generator->printInvoicePdf(invoice,contractor,"invoice.pdf",this);
 
+}
+
+void MainWindow::emailInvoice(int invoiceId) {
+    SettingsManager settings;
+    QString smtpPass     = settings.getValue("smtpPass");
+    QString smtpHost     = settings.getValue("smtpHost");
+    QString smtpUser     = settings.getValue("smtpUser");
+    int smtpPort     = settings.getValue("smtpPort").toInt();
+
+    QString emailName    = settings.getValue("emailName");
+    QString emailAddress = settings.getValue("emailAddress");
+    Invoice invoice =invoiceRepository->getInvoiceById(invoiceId);
+    Contractor contractor = contractorRepository->getById(invoice.contractorId);
+
+    EmailSender *sender = new EmailSender(smtpHost,smtpPort,smtpUser,smtpPass,emailAddress,emailName);
+
+
+     InvoiceToPdfGenerator *generator = new InvoiceToPdfGenerator();
+    generator->generateInvoicePdf(invoice,contractor,"invoice.pdf");
+    if(sender->sendInvoiceEmail(contractor,invoice,"invoice.pdf")){
+      QMessageBox::information(this, "Sukces", "Email został wysłany na adres "+QString::fromStdString(contractor.email));
+    }else{
+        QMessageBox::information(this, "Błąd", "Nie można było wysłać emaila.");
+    }
 }
 
 void MainWindow::deleteInvoice(int invoiceId) {

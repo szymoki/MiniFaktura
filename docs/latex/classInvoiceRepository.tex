@@ -1,0 +1,118 @@
+\hypertarget{classInvoiceRepository}{}\doxysection{Invoice\+Repository Class Reference}
+\label{classInvoiceRepository}\index{InvoiceRepository@{InvoiceRepository}}
+
+
+Class representing a repository for managing invoices.  
+
+
+
+
+{\ttfamily \#include $<$invoicerepository.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInvoiceRepository_abb57e189d3017df58d55d886c039e6c8}{Invoice\+Repository}} (\mbox{\hyperlink{classIDataSource}{IData\+Source}} $\ast$data\+Source)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classInvoiceRepository}{Invoice\+Repository}} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInvoiceRepository_abf07557ec94d0db87c6c45099fb816ae}{save\+Invoice}} (const \mbox{\hyperlink{structInvoice}{Invoice}} \&invoice)
+\begin{DoxyCompactList}\small\item\em Save an invoice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structInvoice}{Invoice}} \mbox{\hyperlink{classInvoiceRepository_aa97790b0b69d36d63176627beb7bf2a5}{get\+Invoice\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get an invoice by ID. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structInvoice}{Invoice}} $>$ \mbox{\hyperlink{classInvoiceRepository_a5219916144c0363247349da0ac3a1763}{get\+All\+Invoices}} ()
+\begin{DoxyCompactList}\small\item\em Get all invoices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInvoiceRepository_ae42c98e4aa603668c012992ce6dbd0c3}{delete\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Delete an invoice by ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classInvoiceRepository_ada340caa85f28ad1e180cae38d45b4f8}\label{classInvoiceRepository_ada340caa85f28ad1e180cae38d45b4f8}} 
+std\+::string {\bfseries get\+Next\+Invoice\+Number} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a repository for managing invoices. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInvoiceRepository_abb57e189d3017df58d55d886c039e6c8}\label{classInvoiceRepository_abb57e189d3017df58d55d886c039e6c8}} 
+\index{InvoiceRepository@{InvoiceRepository}!InvoiceRepository@{InvoiceRepository}}
+\index{InvoiceRepository@{InvoiceRepository}!InvoiceRepository@{InvoiceRepository}}
+\doxysubsubsection{\texorpdfstring{InvoiceRepository()}{InvoiceRepository()}}
+{\footnotesize\ttfamily Invoice\+Repository\+::\+Invoice\+Repository (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIDataSource}{IData\+Source}} $\ast$}]{data\+Source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classInvoiceRepository}{Invoice\+Repository}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Source} & A pointer to the data source \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInvoiceRepository_ae42c98e4aa603668c012992ce6dbd0c3}\label{classInvoiceRepository_ae42c98e4aa603668c012992ce6dbd0c3}} 
+\index{InvoiceRepository@{InvoiceRepository}!deleteById@{deleteById}}
+\index{deleteById@{deleteById}!InvoiceRepository@{InvoiceRepository}}
+\doxysubsubsection{\texorpdfstring{deleteById()}{deleteById()}}
+{\footnotesize\ttfamily void Invoice\+Repository\+::delete\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Delete an invoice by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the invoice to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInvoiceRepository_a5219916144c0363247349da0ac3a1763}\label{classInvoiceRepository_a5219916144c0363247349da0ac3a1763}} 
+\index{InvoiceRepository@{InvoiceRepository}!getAllInvoices@{getAllInvoices}}
+\index{getAllInvoices@{getAllInvoices}!InvoiceRepository@{InvoiceRepository}}
+\doxysubsubsection{\texorpdfstring{getAllInvoices()}{getAllInvoices()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structInvoice}{Invoice}} $>$ Invoice\+Repository\+::get\+All\+Invoices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get all invoices. 
+
+\begin{DoxyReturn}{Returns}
+A vector of all invoices 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInvoiceRepository_aa97790b0b69d36d63176627beb7bf2a5}\label{classInvoiceRepository_aa97790b0b69d36d63176627beb7bf2a5}} 
+\index{InvoiceRepository@{InvoiceRepository}!getInvoiceById@{getInvoiceById}}
+\index{getInvoiceById@{getInvoiceById}!InvoiceRepository@{InvoiceRepository}}
+\doxysubsubsection{\texorpdfstring{getInvoiceById()}{getInvoiceById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInvoice}{Invoice}} Invoice\+Repository\+::get\+Invoice\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get an invoice by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the invoice to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The invoice with the specified ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInvoiceRepository_abf07557ec94d0db87c6c45099fb816ae}\label{classInvoiceRepository_abf07557ec94d0db87c6c45099fb816ae}} 
+\index{InvoiceRepository@{InvoiceRepository}!saveInvoice@{saveInvoice}}
+\index{saveInvoice@{saveInvoice}!InvoiceRepository@{InvoiceRepository}}
+\doxysubsubsection{\texorpdfstring{saveInvoice()}{saveInvoice()}}
+{\footnotesize\ttfamily void Invoice\+Repository\+::save\+Invoice (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInvoice}{Invoice}} \&}]{invoice }\end{DoxyParamCaption})}
+
+
+
+Save an invoice. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invoice} & The invoice to save \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+invoicerepository.\+h\item 
+invoicerepository.\+cpp\end{DoxyCompactItemize}

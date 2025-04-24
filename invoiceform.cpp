@@ -94,6 +94,7 @@ void InvoiceForm::on_buttonBox_accepted()
         return;
     }
     QString createDate = ui->dateEdit->date().toString("yyyy-MM-dd");
+    QString maturityDate = ui->date2Edit->date().toString("yyyy-MM-dd");
 
       // Odczytaj ID wybranego kontrahenta z comboboxa
       int contractorId = ui->contractorSelect->currentData().toInt();
@@ -106,6 +107,8 @@ void InvoiceForm::on_buttonBox_accepted()
       invoice.id = 0; // Nowa faktura
       invoice.contractorId = contractorId;
       invoice.createDate = createDate.toStdString();
+      invoice.maturityDate = maturityDate.toStdString();
+
       invoice.invoiceNumber = invoiceNumber.toStdString();
       invoice.totalAmount = 0.0;
       invoice.amount = 0.0;

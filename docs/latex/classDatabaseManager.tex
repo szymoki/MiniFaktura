@@ -1,0 +1,87 @@
+\hypertarget{classDatabaseManager}{}\doxysection{Database\+Manager Class Reference}
+\label{classDatabaseManager}\index{DatabaseManager@{DatabaseManager}}
+
+
+Class for managing SQLite database connection and table creation.  
+
+
+
+
+{\ttfamily \#include $<$databasemanager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classDatabaseManager_a01cbe99324fd27ccc6c0b53d1fe09fd0}{connect\+DB}} (const QString \&db\+Path, const QString \&connection\+Name=\char`\"{}default\char`\"{})
+\begin{DoxyCompactList}\small\item\em Connect to the SQLite database. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDatabaseManager_ae642d8692ee2f8e78d7beffe23571fae}\label{classDatabaseManager_ae642d8692ee2f8e78d7beffe23571fae}} 
+void \mbox{\hyperlink{classDatabaseManager_ae642d8692ee2f8e78d7beffe23571fae}{close\+DB}} ()
+\begin{DoxyCompactList}\small\item\em Close the connection to the database. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDatabaseManager_aee6f98c64719143b27cfbcd21451f94b}\label{classDatabaseManager_aee6f98c64719143b27cfbcd21451f94b}} 
+void \mbox{\hyperlink{classDatabaseManager_aee6f98c64719143b27cfbcd21451f94b}{migrate}} ()
+\begin{DoxyCompactList}\small\item\em Perform database migration tasks. \end{DoxyCompactList}\item 
+QSql\+Database \mbox{\hyperlink{classDatabaseManager_a63548261b9b7c4da2faae5078c844aee}{get\+Database}} () const
+\begin{DoxyCompactList}\small\item\em Get the QSql\+Database object representing the database connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} \& \mbox{\hyperlink{classDatabaseManager_a40dbc3c1489575c5629b20f8f076cc3a}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get the global instance of the \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for managing SQLite database connection and table creation. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDatabaseManager_a01cbe99324fd27ccc6c0b53d1fe09fd0}\label{classDatabaseManager_a01cbe99324fd27ccc6c0b53d1fe09fd0}} 
+\index{DatabaseManager@{DatabaseManager}!connectDB@{connectDB}}
+\index{connectDB@{connectDB}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{connectDB()}{connectDB()}}
+{\footnotesize\ttfamily bool Database\+Manager\+::connect\+DB (\begin{DoxyParamCaption}\item[{const QString \&}]{db\+Path,  }\item[{const QString \&}]{connection\+Name = {\ttfamily \char`\"{}default\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Connect to the SQLite database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db\+Path} & The path to the SQLite database file \\
+\hline
+{\em connection\+Name} & The name of the connection (default is \char`\"{}default\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the connection was successful, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDatabaseManager_a63548261b9b7c4da2faae5078c844aee}\label{classDatabaseManager_a63548261b9b7c4da2faae5078c844aee}} 
+\index{DatabaseManager@{DatabaseManager}!getDatabase@{getDatabase}}
+\index{getDatabase@{getDatabase}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{getDatabase()}{getDatabase()}}
+{\footnotesize\ttfamily QSql\+Database Database\+Manager\+::get\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the QSql\+Database object representing the database connection. 
+
+\begin{DoxyReturn}{Returns}
+QSql\+Database The QSql\+Database object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDatabaseManager_a40dbc3c1489575c5629b20f8f076cc3a}\label{classDatabaseManager_a40dbc3c1489575c5629b20f8f076cc3a}} 
+\index{DatabaseManager@{DatabaseManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!DatabaseManager@{DatabaseManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} \& Database\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the global instance of the \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} class. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classDatabaseManager}{Database\+Manager}}\& The global instance of \mbox{\hyperlink{classDatabaseManager}{Database\+Manager}} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+databasemanager.\+h\item 
+databasemanager.\+cpp\end{DoxyCompactItemize}

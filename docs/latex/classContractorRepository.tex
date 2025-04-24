@@ -1,0 +1,145 @@
+\hypertarget{classContractorRepository}{}\doxysection{Contractor\+Repository Class Reference}
+\label{classContractorRepository}\index{ContractorRepository@{ContractorRepository}}
+
+
+The \mbox{\hyperlink{classContractorRepository}{Contractor\+Repository}} class represents a repository for managing contractors.  
+
+
+
+
+{\ttfamily \#include $<$contractorrepository.\+h$>$}
+
+
+
+Inheritance diagram for Contractor\+Repository\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classContractorRepository__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Contractor\+Repository\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classContractorRepository__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContractorRepository_aa7f6ce1b7e9d4c98424c0e36e1003ddb}{Contractor\+Repository}} (\mbox{\hyperlink{classIDataSource}{IData\+Source}} $\ast$data\+Source)
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classContractorRepository}{Contractor\+Repository}} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structContractor}{Contractor}} $>$ \mbox{\hyperlink{classContractorRepository_ae83ee3018aceb5abe37250ab353631d0}{get\+All}} () override
+\begin{DoxyCompactList}\small\item\em Get all contractors. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structContractor}{Contractor}} \mbox{\hyperlink{classContractorRepository_a6feead776ac5679bd0c07bec3c76e930}{get\+By\+Id}} (int id) override
+\begin{DoxyCompactList}\small\item\em Get a contractor by ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContractorRepository_a41d4ec32129d273ccc4ea9e775e5d541}{save}} (const \mbox{\hyperlink{structContractor}{Contractor}} \&contractor) override
+\begin{DoxyCompactList}\small\item\em Save a contractor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContractorRepository_a8b964bbaca44f7917f8f6bce58d0ba63}{delete\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Delete a contractor by ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classContractorRepository}{Contractor\+Repository}} class represents a repository for managing contractors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classContractorRepository_aa7f6ce1b7e9d4c98424c0e36e1003ddb}\label{classContractorRepository_aa7f6ce1b7e9d4c98424c0e36e1003ddb}} 
+\index{ContractorRepository@{ContractorRepository}!ContractorRepository@{ContractorRepository}}
+\index{ContractorRepository@{ContractorRepository}!ContractorRepository@{ContractorRepository}}
+\doxysubsubsection{\texorpdfstring{ContractorRepository()}{ContractorRepository()}}
+{\footnotesize\ttfamily Contractor\+Repository\+::\+Contractor\+Repository (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIDataSource}{IData\+Source}} $\ast$}]{data\+Source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classContractorRepository}{Contractor\+Repository}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Source} & A pointer to the data source \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classContractorRepository_a8b964bbaca44f7917f8f6bce58d0ba63}\label{classContractorRepository_a8b964bbaca44f7917f8f6bce58d0ba63}} 
+\index{ContractorRepository@{ContractorRepository}!deleteById@{deleteById}}
+\index{deleteById@{deleteById}!ContractorRepository@{ContractorRepository}}
+\doxysubsubsection{\texorpdfstring{deleteById()}{deleteById()}}
+{\footnotesize\ttfamily void Contractor\+Repository\+::delete\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Delete a contractor by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the contractor to delete \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContractorRepository_ae83ee3018aceb5abe37250ab353631d0}\label{classContractorRepository_ae83ee3018aceb5abe37250ab353631d0}} 
+\index{ContractorRepository@{ContractorRepository}!getAll@{getAll}}
+\index{getAll@{getAll}!ContractorRepository@{ContractorRepository}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structContractor}{Contractor}} $>$ Contractor\+Repository\+::get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all contractors. 
+
+\begin{DoxyReturn}{Returns}
+A vector of all contractors 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIContractorRepository}{IContractor\+Repository}}.
+
+\mbox{\Hypertarget{classContractorRepository_a6feead776ac5679bd0c07bec3c76e930}\label{classContractorRepository_a6feead776ac5679bd0c07bec3c76e930}} 
+\index{ContractorRepository@{ContractorRepository}!getById@{getById}}
+\index{getById@{getById}!ContractorRepository@{ContractorRepository}}
+\doxysubsubsection{\texorpdfstring{getById()}{getById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structContractor}{Contractor}} Contractor\+Repository\+::get\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a contractor by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the contractor to retrieve \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contractor with the specified ID 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIContractorRepository}{IContractor\+Repository}}.
+
+\mbox{\Hypertarget{classContractorRepository_a41d4ec32129d273ccc4ea9e775e5d541}\label{classContractorRepository_a41d4ec32129d273ccc4ea9e775e5d541}} 
+\index{ContractorRepository@{ContractorRepository}!save@{save}}
+\index{save@{save}!ContractorRepository@{ContractorRepository}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Contractor\+Repository\+::save (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structContractor}{Contractor}} \&}]{contractor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Save a contractor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contractor} & The contractor to save \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIContractorRepository}{IContractor\+Repository}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+contractorrepository.\+h\item 
+contractorrepository.\+cpp\end{DoxyCompactItemize}

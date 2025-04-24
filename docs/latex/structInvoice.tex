@@ -1,0 +1,89 @@
+\hypertarget{structInvoice}{}\doxysection{Invoice Struct Reference}
+\label{structInvoice}\index{Invoice@{Invoice}}
+
+
+Represents an invoice.  
+
+
+
+
+{\ttfamily \#include $<$idatasource.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structInvoice_a8ea8eddb6f7e0ef7208aed68d5213bee}{id}}
+\item 
+int \mbox{\hyperlink{structInvoice_ac75e8fcef1973b18f2fec6f28c58557e}{contractor\+Id}}
+\item 
+std\+::string \mbox{\hyperlink{structInvoice_a79579dc72765d23e1c0c5c4b30590f96}{create\+Date}}
+\item 
+std\+::string \mbox{\hyperlink{structInvoice_a22fb87c5c6335e50ba7ac4b82dbf2881}{maturity\+Date}}
+\item 
+std\+::string \mbox{\hyperlink{structInvoice_a07264f93ec44058ff4d235265a8035ad}{invoice\+Number}}
+\item 
+double \mbox{\hyperlink{structInvoice_a9fb2bb0aa8e7d0e171d1f0255c4b7360}{total\+Amount}}
+\item 
+double \mbox{\hyperlink{structInvoice_a6d2575f53ae0fe4270665e4534081d48}{amount}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structInvoiceItem}{Invoice\+Item}} $>$ \mbox{\hyperlink{structInvoice_a9b269646f7d403c3f9d561c9ad9aa74e}{items}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an invoice. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structInvoice_a6d2575f53ae0fe4270665e4534081d48}\label{structInvoice_a6d2575f53ae0fe4270665e4534081d48}} 
+\index{Invoice@{Invoice}!amount@{amount}}
+\index{amount@{amount}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{amount}{amount}}
+{\footnotesize\ttfamily double Invoice\+::amount}
+
+The amount of the invoice \mbox{\Hypertarget{structInvoice_ac75e8fcef1973b18f2fec6f28c58557e}\label{structInvoice_ac75e8fcef1973b18f2fec6f28c58557e}} 
+\index{Invoice@{Invoice}!contractorId@{contractorId}}
+\index{contractorId@{contractorId}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{contractorId}{contractorId}}
+{\footnotesize\ttfamily int Invoice\+::contractor\+Id}
+
+The ID of the contractor associated with the invoice \mbox{\Hypertarget{structInvoice_a79579dc72765d23e1c0c5c4b30590f96}\label{structInvoice_a79579dc72765d23e1c0c5c4b30590f96}} 
+\index{Invoice@{Invoice}!createDate@{createDate}}
+\index{createDate@{createDate}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{createDate}{createDate}}
+{\footnotesize\ttfamily std\+::string Invoice\+::create\+Date}
+
+The creation date of the invoice \mbox{\Hypertarget{structInvoice_a8ea8eddb6f7e0ef7208aed68d5213bee}\label{structInvoice_a8ea8eddb6f7e0ef7208aed68d5213bee}} 
+\index{Invoice@{Invoice}!id@{id}}
+\index{id@{id}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Invoice\+::id}
+
+The unique identifier of the invoice \mbox{\Hypertarget{structInvoice_a07264f93ec44058ff4d235265a8035ad}\label{structInvoice_a07264f93ec44058ff4d235265a8035ad}} 
+\index{Invoice@{Invoice}!invoiceNumber@{invoiceNumber}}
+\index{invoiceNumber@{invoiceNumber}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{invoiceNumber}{invoiceNumber}}
+{\footnotesize\ttfamily std\+::string Invoice\+::invoice\+Number}
+
+The invoice number \mbox{\Hypertarget{structInvoice_a9b269646f7d403c3f9d561c9ad9aa74e}\label{structInvoice_a9b269646f7d403c3f9d561c9ad9aa74e}} 
+\index{Invoice@{Invoice}!items@{items}}
+\index{items@{items}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structInvoiceItem}{Invoice\+Item}}$>$ Invoice\+::items}
+
+The list of items in the invoice \mbox{\Hypertarget{structInvoice_a22fb87c5c6335e50ba7ac4b82dbf2881}\label{structInvoice_a22fb87c5c6335e50ba7ac4b82dbf2881}} 
+\index{Invoice@{Invoice}!maturityDate@{maturityDate}}
+\index{maturityDate@{maturityDate}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{maturityDate}{maturityDate}}
+{\footnotesize\ttfamily std\+::string Invoice\+::maturity\+Date}
+
+The maturity date of the invoice \mbox{\Hypertarget{structInvoice_a9fb2bb0aa8e7d0e171d1f0255c4b7360}\label{structInvoice_a9fb2bb0aa8e7d0e171d1f0255c4b7360}} 
+\index{Invoice@{Invoice}!totalAmount@{totalAmount}}
+\index{totalAmount@{totalAmount}!Invoice@{Invoice}}
+\doxysubsubsection{\texorpdfstring{totalAmount}{totalAmount}}
+{\footnotesize\ttfamily double Invoice\+::total\+Amount}
+
+The total amount of the invoice 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+idatasource.\+h\end{DoxyCompactItemize}

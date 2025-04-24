@@ -23,9 +23,10 @@ public:
     /**
      * @brief Constructor for the ContractorForm class
      * @param contractorRepo A pointer to the ContractorRepository
+     * @param id Id to edit contractor, 0 to create
      * @param parent The parent widget (default is nullptr)
      */
-    explicit ContractorForm(ContractorRepository* contractorRepo, QWidget *parent = nullptr);
+    explicit ContractorForm(ContractorRepository* contractorRepo,int id=0, QWidget *parent = nullptr);
 
     /**
      * @brief Destructor for the ContractorForm class
@@ -41,6 +42,7 @@ private slots:
 private:
     Ui::ContractorForm *ui; /**< The UI object for the ContractorForm */
     ContractorRepository* contractorRepository; /**< Pointer to the ContractorRepository */
+    int editId=0;
 };
 
 #endif // CONTRACTORFORM_H

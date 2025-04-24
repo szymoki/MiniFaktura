@@ -24,6 +24,7 @@ struct Invoice {
     int id; /**< The unique identifier of the invoice */
     int contractorId; /**< The ID of the contractor associated with the invoice */
     std::string createDate; /**< The creation date of the invoice */
+    std::string maturityDate; /**< The maturity date of the invoice */
     std::string invoiceNumber; /**< The invoice number */
     double totalAmount; /**< The total amount of the invoice */
     double amount; /**< The amount of the invoice */
